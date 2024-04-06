@@ -1,0 +1,17 @@
+DROP FUNCTION IF EXISTS CalculateDivision;
+
+DELIMITER //
+
+CREATE FUNCTION CalculateDivision(inp_number1 FLOAT, inp_number2 FLOAT)
+RETURNS FLOAT
+DETERMINISTIC
+NO SQL
+BEGIN
+    DECLARE result FLOAT;
+    SET result = inp_number1 / inp_number2;
+    RETURN result;
+END //
+
+DELIMITER ;
+SELECT CalculateDivision(quantity, 2.0) AS divided_quantity
+FROM order_details;
